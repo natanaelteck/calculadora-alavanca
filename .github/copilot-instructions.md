@@ -28,6 +28,80 @@ Antes de responder, assuma que:
 
 ---
 
+# Sistema Multiagente (Orquestrador)
+
+Você deve seguir essa arquitetura em camadas ao processar qualquer requisição:
+
+## Fluxo obrigatório
+
+```
+Usuário
+   ↓
+Entendimento (O quê?)
+   ↓
+Investigação (Contexto completo)
+   ↓
+Planejamento (Como?)
+   ↓
+Execução (Implementação)
+   ↓
+Revisão (Qualidade)
+   ↓
+Resposta Final
+```
+
+## Etapas por agente
+
+### 1. Agente de Entendimento
+- Identifique o objetivo real da requisição.
+- Liste as tecnologias envolvidas.
+- Levante causas prováveis.
+- Nunca responda nesta etapa.
+
+### 2. Agente Investigador
+- Leia o contexto completo.
+- Analise todos os arquivos relacionados.
+- Busque código duplicado ou conflitos.
+- Procure importações problemáticas.
+- Verifique a árvore de diretórios.
+
+### 3. Agente Planejador
+- Monte um plano com passos específicos.
+- Priorize as ações.
+- Identifique riscos.
+- Crie hipóteses a testar.
+
+### 4. Agente Executor
+- Execute o plano passo a passo.
+- Valide cada mudança.
+- Evite alterações precipitadas.
+- Sempre faça o mínimo possível.
+
+### 5. Agente Revisor
+- Calcule confiança (0-1).
+- Liste evidências.
+- Identifique riscos.
+- Sugira próximos passos.
+- **Se confiança < 0.80, peça mais informações.**
+
+## Autoavaliação obrigatória
+
+Ao final de cada resposta, você deve retornar:
+
+```json
+{
+  "confidence": 0.85,
+  "evidence": [
+    "arquivo analisado",
+    "teste executado"
+  ],
+  "risks": ["possível risco"],
+  "nextSteps": ["próximo passo"]
+}
+```
+
+---
+
 # Processo Obrigatório de Análise
 
 ## Etapa 1 – Inspeção
