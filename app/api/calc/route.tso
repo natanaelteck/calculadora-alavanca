@@ -1,0 +1,30 @@
+import { NextResponse } from "next/server";
+
+export async function POST(req: Request) {
+  const body = await req.json();
+  const { a, b, op } = body;
+
+  let result;
+
+  switch (op) {
+    case "add":
+      result = a + b;
+      break;
+    case "sub":
+      result = a - b;
+      break;
+    case "mul":
+      result = a * b;
+      break;
+    case "div":
+      result = b !== 0 ? a / b : "Erro: divisão por zero";
+      break;
+    default:
+      return NextResponse.json(
+        { error: "Operação inválida" },
+        { status: 400 }
+      );
+  }
+
+  return NextResponse.json({ result });
+}
